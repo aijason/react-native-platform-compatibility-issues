@@ -153,8 +153,31 @@ const newImageUri = `https://www.image.com?a=b&timestamp=${new Date().getTime()}
 
 解决方法：参考https://www.iteye.com/blog/niufc-1729792 这篇博客
 
+### 13、ImageBackground组件设置style样式borderRadius在Android 上无效果
 
+解决方法：给ImageBackground组件属性imageStyle上设置borderRadius
 
+	<ImageBackground
+	   imageStyle={{ borderRadius: xxx }}	
+  	>...</ImageBackground>
+	
+### 14、在react-native ^0.61.1版本上给View设置borderRadius在Android上无效果
+
+解决方法： 给需要设置borderRadius的View组件嵌套在一个带有backgroundColor属性的View组件里
+
+	<View>
+	   style={{
+	   	...
+		backgroundColor: 'rgba(0,0,0,.005)'
+	   }}
+  	>
+	  <View style={{
+	  	...
+		borderRadius: ...
+	  }}/>
+	</View>
+
+	
 ### IOS
 
 #### 1、在WebView中，IOS获取window.postMessage传递参数时，在onMessage中解析参数需使用双重decodeURIComponent解码
